@@ -1,0 +1,1343 @@
+{
+  "schemaVersion": 2,
+  "style": "programmatic",
+  "names": {
+    "typeName": "Node0mcpBlogApi",
+    "nodeName": "node0mcpBlogApi",
+    "descriptionName": "node0mcpBlogApi",
+    "hasTriggers": false,
+    "nodeFiles": [
+      "dist/nodes/Node0mcpBlogApi/Node0mcpBlogApi.node.js"
+    ],
+    "credentialFiles": [
+      "dist/credentials/Node0mcpBlogApiApi.credentials.js"
+    ]
+  },
+  "target": {
+    "targetN8nRange": ">=1.110 <2.0",
+    "declarative": true,
+    "programmatic": true,
+    "fullVersioning": true
+  },
+  "versioning": "light",
+  "versions": [
+    1
+  ],
+  "diagnostics": [
+    {
+      "severity": "warning",
+      "code": "NF_PAGINATION_UNSAFE",
+      "location": "/paths/~1api~1blogs/get",
+      "explanation": "Operation \"\" looks paginated, but no explicit safe Pagination Contract is available.",
+      "resolution": "The generated operation remains single-page until an explicit bounded Pagination Contract is provided."
+    }
+  ],
+  "operationContracts": [
+    {
+      "operationId": "deleteApiBlogsId",
+      "method": "DELETE",
+      "path": "/api/blogs/{id}",
+      "serverId": "documentServer1Https0mcpDev",
+      "authentication": [
+        {
+          "schemes": [
+            "BlogAPIKey"
+          ],
+          "scopes": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "inputName": "id",
+          "location": "path",
+          "required": true,
+          "arrayFormat": "indices"
+        }
+      ],
+      "request": {
+        "contentType": "application/json",
+        "representation": "structured",
+        "fields": []
+      },
+      "retry": {},
+      "pagination": {
+        "style": "none"
+      },
+      "response": {},
+      "errors": [
+        {
+          "status": "400",
+          "title": "Invalid request"
+        },
+        {
+          "status": "401",
+          "title": "Unauthorized"
+        },
+        {
+          "status": "404",
+          "title": "Not found"
+        },
+        {
+          "status": "409",
+          "title": "Conflict"
+        }
+      ],
+      "requestPlan": {
+        "operationId": "deleteApiBlogsId",
+        "method": "DELETE",
+        "path": "/api/blogs/{id}",
+        "serverId": "documentServer1Https0mcpDev",
+        "request": {
+          "method": "DELETE",
+          "url": "=/api/blogs/{{$parameter[\"id\"]}}",
+          "query": [],
+          "body": [],
+          "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          }
+        },
+        "authentication": [
+          {
+            "schemes": [
+              "BlogAPIKey"
+            ],
+            "scopes": []
+          }
+        ],
+        "retry": {},
+        "pagination": {
+          "style": "none"
+        },
+        "response": {},
+        "errors": [
+          {
+            "status": "400",
+            "title": "Invalid request"
+          },
+          {
+            "status": "401",
+            "title": "Unauthorized"
+          },
+          {
+            "status": "404",
+            "title": "Not found"
+          },
+          {
+            "status": "409",
+            "title": "Conflict"
+          }
+        ],
+        "unsupportedSemantics": []
+      }
+    },
+    {
+      "operationId": "getApiBlogs",
+      "method": "GET",
+      "path": "/api/blogs",
+      "serverId": "documentServer1Https0mcpDev",
+      "authentication": [
+        {
+          "schemes": [
+            "BlogAPIKey"
+          ],
+          "scopes": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "status",
+          "inputName": "status",
+          "location": "query",
+          "required": false,
+          "arrayFormat": "indices"
+        },
+        {
+          "name": "category",
+          "inputName": "category",
+          "location": "query",
+          "required": false,
+          "arrayFormat": "indices"
+        },
+        {
+          "name": "page",
+          "inputName": "page",
+          "location": "query",
+          "required": false,
+          "arrayFormat": "indices"
+        },
+        {
+          "name": "page_size",
+          "inputName": "page_size",
+          "location": "query",
+          "required": false,
+          "arrayFormat": "indices"
+        }
+      ],
+      "request": {
+        "contentType": "application/json",
+        "representation": "structured",
+        "fields": []
+      },
+      "retry": {},
+      "pagination": {
+        "style": "none"
+      },
+      "response": {
+        "fields": [
+          {
+            "name": "pagination",
+            "type": "object"
+          },
+          {
+            "name": "posts",
+            "type": "array"
+          }
+        ],
+        "simplifiedFields": [
+          "pagination",
+          "posts"
+        ]
+      },
+      "errors": [
+        {
+          "status": "400",
+          "title": "Invalid request"
+        },
+        {
+          "status": "401",
+          "title": "Unauthorized"
+        },
+        {
+          "status": "404",
+          "title": "Not found"
+        },
+        {
+          "status": "409",
+          "title": "Conflict"
+        }
+      ],
+      "requestPlan": {
+        "operationId": "getApiBlogs",
+        "method": "GET",
+        "path": "/api/blogs",
+        "serverId": "documentServer1Https0mcpDev",
+        "request": {
+          "method": "GET",
+          "url": "=/api/blogs",
+          "query": [
+            {
+              "name": "status",
+              "source": "additionalFields"
+            },
+            {
+              "name": "category",
+              "source": "additionalFields"
+            },
+            {
+              "name": "page",
+              "source": "additionalFields"
+            },
+            {
+              "name": "page_size",
+              "source": "additionalFields"
+            }
+          ],
+          "body": [],
+          "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          }
+        },
+        "authentication": [
+          {
+            "schemes": [
+              "BlogAPIKey"
+            ],
+            "scopes": []
+          }
+        ],
+        "retry": {},
+        "pagination": {
+          "style": "none"
+        },
+        "response": {
+          "fields": [
+            {
+              "name": "pagination",
+              "type": "object"
+            },
+            {
+              "name": "posts",
+              "type": "array"
+            }
+          ],
+          "simplifiedFields": [
+            "pagination",
+            "posts"
+          ]
+        },
+        "errors": [
+          {
+            "status": "400",
+            "title": "Invalid request"
+          },
+          {
+            "status": "401",
+            "title": "Unauthorized"
+          },
+          {
+            "status": "404",
+            "title": "Not found"
+          },
+          {
+            "status": "409",
+            "title": "Conflict"
+          }
+        ],
+        "unsupportedSemantics": []
+      }
+    },
+    {
+      "operationId": "getApiBlogsId",
+      "method": "GET",
+      "path": "/api/blogs/{id}",
+      "serverId": "documentServer1Https0mcpDev",
+      "authentication": [
+        {
+          "schemes": [
+            "BlogAPIKey"
+          ],
+          "scopes": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "inputName": "id",
+          "location": "path",
+          "required": true,
+          "arrayFormat": "indices"
+        }
+      ],
+      "request": {
+        "contentType": "application/json",
+        "representation": "structured",
+        "fields": []
+      },
+      "retry": {},
+      "pagination": {
+        "style": "none"
+      },
+      "response": {},
+      "errors": [
+        {
+          "status": "400",
+          "title": "Invalid request"
+        },
+        {
+          "status": "401",
+          "title": "Unauthorized"
+        },
+        {
+          "status": "404",
+          "title": "Not found"
+        },
+        {
+          "status": "409",
+          "title": "Conflict"
+        }
+      ],
+      "requestPlan": {
+        "operationId": "getApiBlogsId",
+        "method": "GET",
+        "path": "/api/blogs/{id}",
+        "serverId": "documentServer1Https0mcpDev",
+        "request": {
+          "method": "GET",
+          "url": "=/api/blogs/{{$parameter[\"id\"]}}",
+          "query": [],
+          "body": [],
+          "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          }
+        },
+        "authentication": [
+          {
+            "schemes": [
+              "BlogAPIKey"
+            ],
+            "scopes": []
+          }
+        ],
+        "retry": {},
+        "pagination": {
+          "style": "none"
+        },
+        "response": {},
+        "errors": [
+          {
+            "status": "400",
+            "title": "Invalid request"
+          },
+          {
+            "status": "401",
+            "title": "Unauthorized"
+          },
+          {
+            "status": "404",
+            "title": "Not found"
+          },
+          {
+            "status": "409",
+            "title": "Conflict"
+          }
+        ],
+        "unsupportedSemantics": []
+      }
+    },
+    {
+      "operationId": "patchApiBlogsId",
+      "method": "PATCH",
+      "path": "/api/blogs/{id}",
+      "serverId": "documentServer1Https0mcpDev",
+      "authentication": [
+        {
+          "schemes": [
+            "BlogAPIKey"
+          ],
+          "scopes": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "inputName": "id",
+          "location": "path",
+          "required": true,
+          "arrayFormat": "indices"
+        }
+      ],
+      "request": {
+        "contentType": "application/json",
+        "representation": "structured",
+        "fields": [
+          {
+            "name": "authors",
+            "inputName": "authors",
+            "type": "array",
+            "required": false
+          },
+          {
+            "name": "canonical_url",
+            "inputName": "canonical_url",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "category",
+            "inputName": "category",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "content",
+            "inputName": "content",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "created_at",
+            "inputName": "created_at",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "description",
+            "inputName": "description",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "faq_content",
+            "inputName": "faq_content",
+            "type": "array",
+            "required": true
+          },
+          {
+            "name": "featured_image",
+            "inputName": "featured_image",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "featured_image_alt",
+            "inputName": "featured_image_alt",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "focus_keyword",
+            "inputName": "focus_keyword",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "id",
+            "inputName": "idBody",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "is_published",
+            "inputName": "is_published",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "name": "meta_description",
+            "inputName": "meta_description",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "meta_title",
+            "inputName": "meta_title",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "og_description",
+            "inputName": "og_description",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "og_image",
+            "inputName": "og_image",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "og_image_alt",
+            "inputName": "og_image_alt",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "og_title",
+            "inputName": "og_title",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "published_at",
+            "inputName": "published_at",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "reading_time",
+            "inputName": "reading_time",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "robots_follow",
+            "inputName": "robots_follow",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "name": "robots_index",
+            "inputName": "robots_index",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "name": "schema_type",
+            "inputName": "schema_type",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "seo_keywords",
+            "inputName": "seo_keywords",
+            "type": "array",
+            "required": true
+          },
+          {
+            "name": "slug",
+            "inputName": "slug",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "title",
+            "inputName": "title",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "tldr",
+            "inputName": "tldr",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "twitter_description",
+            "inputName": "twitter_description",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "twitter_image",
+            "inputName": "twitter_image",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "twitter_image_alt",
+            "inputName": "twitter_image_alt",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "twitter_title",
+            "inputName": "twitter_title",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "updated_at",
+            "inputName": "updated_at",
+            "type": "string",
+            "required": false
+          }
+        ]
+      },
+      "retry": {},
+      "pagination": {
+        "style": "none"
+      },
+      "response": {},
+      "errors": [
+        {
+          "status": "400",
+          "title": "Invalid request"
+        },
+        {
+          "status": "401",
+          "title": "Unauthorized"
+        },
+        {
+          "status": "404",
+          "title": "Not found"
+        },
+        {
+          "status": "409",
+          "title": "Conflict"
+        }
+      ],
+      "requestPlan": {
+        "operationId": "patchApiBlogsId",
+        "method": "PATCH",
+        "path": "/api/blogs/{id}",
+        "serverId": "documentServer1Https0mcpDev",
+        "request": {
+          "method": "PATCH",
+          "url": "=/api/blogs/{{$parameter[\"id\"]}}",
+          "query": [],
+          "body": [
+            {
+              "name": "authors",
+              "source": "additionalFields"
+            },
+            {
+              "name": "canonical_url",
+              "source": "additionalFields"
+            },
+            {
+              "name": "category",
+              "source": "parameter"
+            },
+            {
+              "name": "content",
+              "source": "parameter"
+            },
+            {
+              "name": "created_at",
+              "source": "additionalFields"
+            },
+            {
+              "name": "description",
+              "source": "parameter"
+            },
+            {
+              "name": "faq_content",
+              "source": "parameter"
+            },
+            {
+              "name": "featured_image",
+              "source": "additionalFields"
+            },
+            {
+              "name": "featured_image_alt",
+              "source": "additionalFields"
+            },
+            {
+              "name": "focus_keyword",
+              "source": "additionalFields"
+            },
+            {
+              "name": "id",
+              "source": "additionalFields"
+            },
+            {
+              "name": "is_published",
+              "source": "additionalFields"
+            },
+            {
+              "name": "meta_description",
+              "source": "additionalFields"
+            },
+            {
+              "name": "meta_title",
+              "source": "additionalFields"
+            },
+            {
+              "name": "og_description",
+              "source": "additionalFields"
+            },
+            {
+              "name": "og_image",
+              "source": "additionalFields"
+            },
+            {
+              "name": "og_image_alt",
+              "source": "additionalFields"
+            },
+            {
+              "name": "og_title",
+              "source": "additionalFields"
+            },
+            {
+              "name": "published_at",
+              "source": "additionalFields"
+            },
+            {
+              "name": "reading_time",
+              "source": "additionalFields"
+            },
+            {
+              "name": "robots_follow",
+              "source": "additionalFields"
+            },
+            {
+              "name": "robots_index",
+              "source": "additionalFields"
+            },
+            {
+              "name": "schema_type",
+              "source": "parameter"
+            },
+            {
+              "name": "seo_keywords",
+              "source": "parameter"
+            },
+            {
+              "name": "slug",
+              "source": "parameter"
+            },
+            {
+              "name": "title",
+              "source": "parameter"
+            },
+            {
+              "name": "tldr",
+              "source": "additionalFields"
+            },
+            {
+              "name": "twitter_description",
+              "source": "additionalFields"
+            },
+            {
+              "name": "twitter_image",
+              "source": "additionalFields"
+            },
+            {
+              "name": "twitter_image_alt",
+              "source": "additionalFields"
+            },
+            {
+              "name": "twitter_title",
+              "source": "additionalFields"
+            },
+            {
+              "name": "updated_at",
+              "source": "additionalFields"
+            }
+          ],
+          "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          }
+        },
+        "authentication": [
+          {
+            "schemes": [
+              "BlogAPIKey"
+            ],
+            "scopes": []
+          }
+        ],
+        "retry": {},
+        "pagination": {
+          "style": "none"
+        },
+        "response": {},
+        "errors": [
+          {
+            "status": "400",
+            "title": "Invalid request"
+          },
+          {
+            "status": "401",
+            "title": "Unauthorized"
+          },
+          {
+            "status": "404",
+            "title": "Not found"
+          },
+          {
+            "status": "409",
+            "title": "Conflict"
+          }
+        ],
+        "unsupportedSemantics": [
+          "advanced parameter authors",
+          "advanced parameter faq_content",
+          "advanced parameter seo_keywords"
+        ]
+      }
+    },
+    {
+      "operationId": "postApiBlogs",
+      "method": "POST",
+      "path": "/api/blogs",
+      "serverId": "documentServer1Https0mcpDev",
+      "authentication": [
+        {
+          "schemes": [
+            "BlogAPIKey"
+          ],
+          "scopes": []
+        }
+      ],
+      "parameters": [],
+      "request": {
+        "contentType": "application/json",
+        "representation": "structured",
+        "fields": [
+          {
+            "name": "authors",
+            "inputName": "authors",
+            "type": "array",
+            "required": false
+          },
+          {
+            "name": "canonical_url",
+            "inputName": "canonical_url",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "category",
+            "inputName": "category",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "content",
+            "inputName": "content",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "created_at",
+            "inputName": "created_at",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "description",
+            "inputName": "description",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "faq_content",
+            "inputName": "faq_content",
+            "type": "array",
+            "required": true
+          },
+          {
+            "name": "featured_image",
+            "inputName": "featured_image",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "featured_image_alt",
+            "inputName": "featured_image_alt",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "focus_keyword",
+            "inputName": "focus_keyword",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "id",
+            "inputName": "id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "is_published",
+            "inputName": "is_published",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "name": "meta_description",
+            "inputName": "meta_description",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "meta_title",
+            "inputName": "meta_title",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "og_description",
+            "inputName": "og_description",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "og_image",
+            "inputName": "og_image",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "og_image_alt",
+            "inputName": "og_image_alt",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "og_title",
+            "inputName": "og_title",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "published_at",
+            "inputName": "published_at",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "reading_time",
+            "inputName": "reading_time",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "robots_follow",
+            "inputName": "robots_follow",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "name": "robots_index",
+            "inputName": "robots_index",
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "name": "schema_type",
+            "inputName": "schema_type",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "seo_keywords",
+            "inputName": "seo_keywords",
+            "type": "array",
+            "required": true
+          },
+          {
+            "name": "slug",
+            "inputName": "slug",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "title",
+            "inputName": "title",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "tldr",
+            "inputName": "tldr",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "twitter_description",
+            "inputName": "twitter_description",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "twitter_image",
+            "inputName": "twitter_image",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "twitter_image_alt",
+            "inputName": "twitter_image_alt",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "twitter_title",
+            "inputName": "twitter_title",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "updated_at",
+            "inputName": "updated_at",
+            "type": "string",
+            "required": false
+          }
+        ]
+      },
+      "retry": {},
+      "pagination": {
+        "style": "none"
+      },
+      "response": {},
+      "errors": [
+        {
+          "status": "400",
+          "title": "Invalid request"
+        },
+        {
+          "status": "401",
+          "title": "Unauthorized"
+        },
+        {
+          "status": "404",
+          "title": "Not found"
+        },
+        {
+          "status": "409",
+          "title": "Conflict"
+        }
+      ],
+      "requestPlan": {
+        "operationId": "postApiBlogs",
+        "method": "POST",
+        "path": "/api/blogs",
+        "serverId": "documentServer1Https0mcpDev",
+        "request": {
+          "method": "POST",
+          "url": "=/api/blogs",
+          "query": [],
+          "body": [
+            {
+              "name": "authors",
+              "source": "additionalFields"
+            },
+            {
+              "name": "canonical_url",
+              "source": "additionalFields"
+            },
+            {
+              "name": "category",
+              "source": "parameter"
+            },
+            {
+              "name": "content",
+              "source": "parameter"
+            },
+            {
+              "name": "created_at",
+              "source": "additionalFields"
+            },
+            {
+              "name": "description",
+              "source": "parameter"
+            },
+            {
+              "name": "faq_content",
+              "source": "parameter"
+            },
+            {
+              "name": "featured_image",
+              "source": "additionalFields"
+            },
+            {
+              "name": "featured_image_alt",
+              "source": "additionalFields"
+            },
+            {
+              "name": "focus_keyword",
+              "source": "additionalFields"
+            },
+            {
+              "name": "id",
+              "source": "additionalFields"
+            },
+            {
+              "name": "is_published",
+              "source": "additionalFields"
+            },
+            {
+              "name": "meta_description",
+              "source": "additionalFields"
+            },
+            {
+              "name": "meta_title",
+              "source": "additionalFields"
+            },
+            {
+              "name": "og_description",
+              "source": "additionalFields"
+            },
+            {
+              "name": "og_image",
+              "source": "additionalFields"
+            },
+            {
+              "name": "og_image_alt",
+              "source": "additionalFields"
+            },
+            {
+              "name": "og_title",
+              "source": "additionalFields"
+            },
+            {
+              "name": "published_at",
+              "source": "additionalFields"
+            },
+            {
+              "name": "reading_time",
+              "source": "additionalFields"
+            },
+            {
+              "name": "robots_follow",
+              "source": "additionalFields"
+            },
+            {
+              "name": "robots_index",
+              "source": "additionalFields"
+            },
+            {
+              "name": "schema_type",
+              "source": "parameter"
+            },
+            {
+              "name": "seo_keywords",
+              "source": "parameter"
+            },
+            {
+              "name": "slug",
+              "source": "parameter"
+            },
+            {
+              "name": "title",
+              "source": "parameter"
+            },
+            {
+              "name": "tldr",
+              "source": "additionalFields"
+            },
+            {
+              "name": "twitter_description",
+              "source": "additionalFields"
+            },
+            {
+              "name": "twitter_image",
+              "source": "additionalFields"
+            },
+            {
+              "name": "twitter_image_alt",
+              "source": "additionalFields"
+            },
+            {
+              "name": "twitter_title",
+              "source": "additionalFields"
+            },
+            {
+              "name": "updated_at",
+              "source": "additionalFields"
+            }
+          ],
+          "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          }
+        },
+        "authentication": [
+          {
+            "schemes": [
+              "BlogAPIKey"
+            ],
+            "scopes": []
+          }
+        ],
+        "retry": {},
+        "pagination": {
+          "style": "none"
+        },
+        "response": {},
+        "errors": [
+          {
+            "status": "400",
+            "title": "Invalid request"
+          },
+          {
+            "status": "401",
+            "title": "Unauthorized"
+          },
+          {
+            "status": "404",
+            "title": "Not found"
+          },
+          {
+            "status": "409",
+            "title": "Conflict"
+          }
+        ],
+        "unsupportedSemantics": [
+          "advanced parameter authors",
+          "advanced parameter faq_content",
+          "advanced parameter seo_keywords"
+        ]
+      }
+    },
+    {
+      "operationId": "postApiBlogsIdPublish",
+      "method": "POST",
+      "path": "/api/blogs/{id}/publish",
+      "serverId": "documentServer1Https0mcpDev",
+      "authentication": [
+        {
+          "schemes": [
+            "BlogAPIKey"
+          ],
+          "scopes": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "inputName": "id",
+          "location": "path",
+          "required": true,
+          "arrayFormat": "indices"
+        }
+      ],
+      "request": {
+        "contentType": "application/json",
+        "representation": "structured",
+        "fields": []
+      },
+      "retry": {},
+      "pagination": {
+        "style": "none"
+      },
+      "response": {},
+      "errors": [
+        {
+          "status": "400",
+          "title": "Invalid request"
+        },
+        {
+          "status": "401",
+          "title": "Unauthorized"
+        },
+        {
+          "status": "404",
+          "title": "Not found"
+        },
+        {
+          "status": "409",
+          "title": "Conflict"
+        }
+      ],
+      "requestPlan": {
+        "operationId": "postApiBlogsIdPublish",
+        "method": "POST",
+        "path": "/api/blogs/{id}/publish",
+        "serverId": "documentServer1Https0mcpDev",
+        "request": {
+          "method": "POST",
+          "url": "=/api/blogs/{{$parameter[\"id\"]}}/publish",
+          "query": [],
+          "body": [],
+          "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          }
+        },
+        "authentication": [
+          {
+            "schemes": [
+              "BlogAPIKey"
+            ],
+            "scopes": []
+          }
+        ],
+        "retry": {},
+        "pagination": {
+          "style": "none"
+        },
+        "response": {},
+        "errors": [
+          {
+            "status": "400",
+            "title": "Invalid request"
+          },
+          {
+            "status": "401",
+            "title": "Unauthorized"
+          },
+          {
+            "status": "404",
+            "title": "Not found"
+          },
+          {
+            "status": "409",
+            "title": "Conflict"
+          }
+        ],
+        "unsupportedSemantics": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,1479 @@
+{
+  "schemaVersion": 1,
+  "fixtures": [
+    {
+      "operationId": "deleteApiBlogsId",
+      "method": "DELETE",
+      "path": "/api/blogs/{id}",
+      "serverId": "documentServer1Https0mcpDev",
+      "authentication": [
+        {
+          "schemes": [
+            "BlogAPIKey"
+          ],
+          "scopes": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "inputName": "id",
+          "sample": "00000000-0000-4000-8000-000000000000",
+          "location": "path",
+          "required": true,
+          "arrayFormat": "indices"
+        }
+      ],
+      "request": {
+        "contentType": "application/json",
+        "representation": "structured",
+        "fields": []
+      },
+      "retry": {},
+      "pagination": {
+        "style": "none"
+      },
+      "response": {},
+      "errors": [
+        {
+          "status": "400",
+          "title": "Invalid request"
+        },
+        {
+          "status": "401",
+          "title": "Unauthorized"
+        },
+        {
+          "status": "404",
+          "title": "Not found"
+        },
+        {
+          "status": "409",
+          "title": "Conflict"
+        }
+      ],
+      "requestPlan": {
+        "operationId": "deleteApiBlogsId",
+        "method": "DELETE",
+        "path": "/api/blogs/{id}",
+        "serverId": "documentServer1Https0mcpDev",
+        "request": {
+          "method": "DELETE",
+          "url": "=/api/blogs/{{$parameter[\"id\"]}}",
+          "query": [],
+          "body": [],
+          "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          }
+        },
+        "authentication": [
+          {
+            "schemes": [
+              "BlogAPIKey"
+            ],
+            "scopes": []
+          }
+        ],
+        "retry": {},
+        "pagination": {
+          "style": "none"
+        },
+        "response": {},
+        "errors": [
+          {
+            "status": "400",
+            "title": "Invalid request"
+          },
+          {
+            "status": "401",
+            "title": "Unauthorized"
+          },
+          {
+            "status": "404",
+            "title": "Not found"
+          },
+          {
+            "status": "409",
+            "title": "Conflict"
+          }
+        ],
+        "unsupportedSemantics": []
+      },
+      "assertions": [
+        "retry attempts preserve request and pagination state until a response succeeds",
+        "pagination advances only after a completed page response",
+        "pagination terminates within declared page, item, elapsed-time, memory, repeated-cursor, and repeated-page budgets"
+      ]
+    },
+    {
+      "operationId": "getApiBlogs",
+      "method": "GET",
+      "path": "/api/blogs",
+      "serverId": "documentServer1Https0mcpDev",
+      "authentication": [
+        {
+          "schemes": [
+            "BlogAPIKey"
+          ],
+          "scopes": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "status",
+          "inputName": "status",
+          "sample": "all",
+          "default": "all",
+          "enum": [
+            "all",
+            "draft",
+            "published"
+          ],
+          "location": "query",
+          "required": false,
+          "arrayFormat": "indices"
+        },
+        {
+          "name": "category",
+          "inputName": "category",
+          "sample": "Engineering",
+          "enum": [
+            "Engineering",
+            "Announcements",
+            "News",
+            "Guides",
+            "Product"
+          ],
+          "location": "query",
+          "required": false,
+          "arrayFormat": "indices"
+        },
+        {
+          "name": "page",
+          "inputName": "page",
+          "sample": 1,
+          "default": 1,
+          "location": "query",
+          "required": false,
+          "arrayFormat": "indices"
+        },
+        {
+          "name": "page_size",
+          "inputName": "page_size",
+          "sample": 12,
+          "default": 12,
+          "location": "query",
+          "required": false,
+          "arrayFormat": "indices"
+        }
+      ],
+      "request": {
+        "contentType": "application/json",
+        "representation": "structured",
+        "fields": []
+      },
+      "retry": {},
+      "pagination": {
+        "style": "none"
+      },
+      "response": {
+        "fields": [
+          {
+            "name": "pagination",
+            "type": "object"
+          },
+          {
+            "name": "posts",
+            "type": "array"
+          }
+        ],
+        "simplifiedFields": [
+          "pagination",
+          "posts"
+        ]
+      },
+      "errors": [
+        {
+          "status": "400",
+          "title": "Invalid request"
+        },
+        {
+          "status": "401",
+          "title": "Unauthorized"
+        },
+        {
+          "status": "404",
+          "title": "Not found"
+        },
+        {
+          "status": "409",
+          "title": "Conflict"
+        }
+      ],
+      "requestPlan": {
+        "operationId": "getApiBlogs",
+        "method": "GET",
+        "path": "/api/blogs",
+        "serverId": "documentServer1Https0mcpDev",
+        "request": {
+          "method": "GET",
+          "url": "=/api/blogs",
+          "query": [
+            {
+              "name": "status",
+              "source": "additionalFields"
+            },
+            {
+              "name": "category",
+              "source": "additionalFields"
+            },
+            {
+              "name": "page",
+              "source": "additionalFields"
+            },
+            {
+              "name": "page_size",
+              "source": "additionalFields"
+            }
+          ],
+          "body": [],
+          "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          }
+        },
+        "authentication": [
+          {
+            "schemes": [
+              "BlogAPIKey"
+            ],
+            "scopes": []
+          }
+        ],
+        "retry": {},
+        "pagination": {
+          "style": "none"
+        },
+        "response": {
+          "fields": [
+            {
+              "name": "pagination",
+              "type": "object"
+            },
+            {
+              "name": "posts",
+              "type": "array"
+            }
+          ],
+          "simplifiedFields": [
+            "pagination",
+            "posts"
+          ]
+        },
+        "errors": [
+          {
+            "status": "400",
+            "title": "Invalid request"
+          },
+          {
+            "status": "401",
+            "title": "Unauthorized"
+          },
+          {
+            "status": "404",
+            "title": "Not found"
+          },
+          {
+            "status": "409",
+            "title": "Conflict"
+          }
+        ],
+        "unsupportedSemantics": []
+      },
+      "assertions": [
+        "retry attempts preserve request and pagination state until a response succeeds",
+        "pagination advances only after a completed page response",
+        "pagination terminates within declared page, item, elapsed-time, memory, repeated-cursor, and repeated-page budgets"
+      ]
+    },
+    {
+      "operationId": "getApiBlogsId",
+      "method": "GET",
+      "path": "/api/blogs/{id}",
+      "serverId": "documentServer1Https0mcpDev",
+      "authentication": [
+        {
+          "schemes": [
+            "BlogAPIKey"
+          ],
+          "scopes": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "inputName": "id",
+          "sample": "00000000-0000-4000-8000-000000000000",
+          "location": "path",
+          "required": true,
+          "arrayFormat": "indices"
+        }
+      ],
+      "request": {
+        "contentType": "application/json",
+        "representation": "structured",
+        "fields": []
+      },
+      "retry": {},
+      "pagination": {
+        "style": "none"
+      },
+      "response": {},
+      "errors": [
+        {
+          "status": "400",
+          "title": "Invalid request"
+        },
+        {
+          "status": "401",
+          "title": "Unauthorized"
+        },
+        {
+          "status": "404",
+          "title": "Not found"
+        },
+        {
+          "status": "409",
+          "title": "Conflict"
+        }
+      ],
+      "requestPlan": {
+        "operationId": "getApiBlogsId",
+        "method": "GET",
+        "path": "/api/blogs/{id}",
+        "serverId": "documentServer1Https0mcpDev",
+        "request": {
+          "method": "GET",
+          "url": "=/api/blogs/{{$parameter[\"id\"]}}",
+          "query": [],
+          "body": [],
+          "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          }
+        },
+        "authentication": [
+          {
+            "schemes": [
+              "BlogAPIKey"
+            ],
+            "scopes": []
+          }
+        ],
+        "retry": {},
+        "pagination": {
+          "style": "none"
+        },
+        "response": {},
+        "errors": [
+          {
+            "status": "400",
+            "title": "Invalid request"
+          },
+          {
+            "status": "401",
+            "title": "Unauthorized"
+          },
+          {
+            "status": "404",
+            "title": "Not found"
+          },
+          {
+            "status": "409",
+            "title": "Conflict"
+          }
+        ],
+        "unsupportedSemantics": []
+      },
+      "assertions": [
+        "retry attempts preserve request and pagination state until a response succeeds",
+        "pagination advances only after a completed page response",
+        "pagination terminates within declared page, item, elapsed-time, memory, repeated-cursor, and repeated-page budgets"
+      ]
+    },
+    {
+      "operationId": "patchApiBlogsId",
+      "method": "PATCH",
+      "path": "/api/blogs/{id}",
+      "serverId": "documentServer1Https0mcpDev",
+      "authentication": [
+        {
+          "schemes": [
+            "BlogAPIKey"
+          ],
+          "scopes": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "inputName": "id",
+          "sample": "00000000-0000-4000-8000-000000000000",
+          "location": "path",
+          "required": true,
+          "arrayFormat": "indices"
+        }
+      ],
+      "request": {
+        "contentType": "application/json",
+        "representation": "structured",
+        "fields": [
+          {
+            "name": "authors",
+            "inputName": "authors",
+            "sample": [
+              {
+                "name": "value/id"
+              }
+            ],
+            "type": "array",
+            "required": false
+          },
+          {
+            "name": "canonical_url",
+            "inputName": "canonical_url",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "category",
+            "inputName": "category",
+            "sample": "Engineering",
+            "enum": [
+              "Engineering",
+              "Announcements",
+              "News",
+              "Guides",
+              "Product"
+            ],
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "content",
+            "inputName": "content",
+            "sample": "value/id",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "created_at",
+            "inputName": "created_at",
+            "sample": "2026-01-01T00:00:00.000Z",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "description",
+            "inputName": "description",
+            "sample": "value/id",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "faq_content",
+            "inputName": "faq_content",
+            "sample": [
+              {
+                "answer": "value/id",
+                "question": "value/id"
+              }
+            ],
+            "type": "array",
+            "required": true
+          },
+          {
+            "name": "featured_image",
+            "inputName": "featured_image",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "featured_image_alt",
+            "inputName": "featured_image_alt",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "focus_keyword",
+            "inputName": "focus_keyword",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "id",
+            "inputName": "idBody",
+            "sample": "00000000-0000-4000-8000-000000000000",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "is_published",
+            "inputName": "is_published",
+            "sample": true,
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "name": "meta_description",
+            "inputName": "meta_description",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "meta_title",
+            "inputName": "meta_title",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "og_description",
+            "inputName": "og_description",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "og_image",
+            "inputName": "og_image",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "og_image_alt",
+            "inputName": "og_image_alt",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "og_title",
+            "inputName": "og_title",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "published_at",
+            "inputName": "published_at",
+            "sample": "2026-01-01T00:00:00.000Z",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "reading_time",
+            "inputName": "reading_time",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "robots_follow",
+            "inputName": "robots_follow",
+            "sample": true,
+            "default": true,
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "name": "robots_index",
+            "inputName": "robots_index",
+            "sample": true,
+            "default": true,
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "name": "schema_type",
+            "inputName": "schema_type",
+            "sample": "BlogPosting",
+            "enum": [
+              "BlogPosting",
+              "Article",
+              "TechArticle"
+            ],
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "seo_keywords",
+            "inputName": "seo_keywords",
+            "sample": [
+              "value/id"
+            ],
+            "type": "array",
+            "required": true
+          },
+          {
+            "name": "slug",
+            "inputName": "slug",
+            "sample": "value-id",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "title",
+            "inputName": "title",
+            "sample": "value/id",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "tldr",
+            "inputName": "tldr",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "twitter_description",
+            "inputName": "twitter_description",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "twitter_image",
+            "inputName": "twitter_image",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "twitter_image_alt",
+            "inputName": "twitter_image_alt",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "twitter_title",
+            "inputName": "twitter_title",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "updated_at",
+            "inputName": "updated_at",
+            "sample": "2026-01-01T00:00:00.000Z",
+            "type": "string",
+            "required": false
+          }
+        ]
+      },
+      "retry": {},
+      "pagination": {
+        "style": "none"
+      },
+      "response": {},
+      "errors": [
+        {
+          "status": "400",
+          "title": "Invalid request"
+        },
+        {
+          "status": "401",
+          "title": "Unauthorized"
+        },
+        {
+          "status": "404",
+          "title": "Not found"
+        },
+        {
+          "status": "409",
+          "title": "Conflict"
+        }
+      ],
+      "requestPlan": {
+        "operationId": "patchApiBlogsId",
+        "method": "PATCH",
+        "path": "/api/blogs/{id}",
+        "serverId": "documentServer1Https0mcpDev",
+        "request": {
+          "method": "PATCH",
+          "url": "=/api/blogs/{{$parameter[\"id\"]}}",
+          "query": [],
+          "body": [
+            {
+              "name": "authors",
+              "source": "additionalFields"
+            },
+            {
+              "name": "canonical_url",
+              "source": "additionalFields"
+            },
+            {
+              "name": "category",
+              "source": "parameter"
+            },
+            {
+              "name": "content",
+              "source": "parameter"
+            },
+            {
+              "name": "created_at",
+              "source": "additionalFields"
+            },
+            {
+              "name": "description",
+              "source": "parameter"
+            },
+            {
+              "name": "faq_content",
+              "source": "parameter"
+            },
+            {
+              "name": "featured_image",
+              "source": "additionalFields"
+            },
+            {
+              "name": "featured_image_alt",
+              "source": "additionalFields"
+            },
+            {
+              "name": "focus_keyword",
+              "source": "additionalFields"
+            },
+            {
+              "name": "id",
+              "source": "additionalFields"
+            },
+            {
+              "name": "is_published",
+              "source": "additionalFields"
+            },
+            {
+              "name": "meta_description",
+              "source": "additionalFields"
+            },
+            {
+              "name": "meta_title",
+              "source": "additionalFields"
+            },
+            {
+              "name": "og_description",
+              "source": "additionalFields"
+            },
+            {
+              "name": "og_image",
+              "source": "additionalFields"
+            },
+            {
+              "name": "og_image_alt",
+              "source": "additionalFields"
+            },
+            {
+              "name": "og_title",
+              "source": "additionalFields"
+            },
+            {
+              "name": "published_at",
+              "source": "additionalFields"
+            },
+            {
+              "name": "reading_time",
+              "source": "additionalFields"
+            },
+            {
+              "name": "robots_follow",
+              "source": "additionalFields"
+            },
+            {
+              "name": "robots_index",
+              "source": "additionalFields"
+            },
+            {
+              "name": "schema_type",
+              "source": "parameter"
+            },
+            {
+              "name": "seo_keywords",
+              "source": "parameter"
+            },
+            {
+              "name": "slug",
+              "source": "parameter"
+            },
+            {
+              "name": "title",
+              "source": "parameter"
+            },
+            {
+              "name": "tldr",
+              "source": "additionalFields"
+            },
+            {
+              "name": "twitter_description",
+              "source": "additionalFields"
+            },
+            {
+              "name": "twitter_image",
+              "source": "additionalFields"
+            },
+            {
+              "name": "twitter_image_alt",
+              "source": "additionalFields"
+            },
+            {
+              "name": "twitter_title",
+              "source": "additionalFields"
+            },
+            {
+              "name": "updated_at",
+              "source": "additionalFields"
+            }
+          ],
+          "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          }
+        },
+        "authentication": [
+          {
+            "schemes": [
+              "BlogAPIKey"
+            ],
+            "scopes": []
+          }
+        ],
+        "retry": {},
+        "pagination": {
+          "style": "none"
+        },
+        "response": {},
+        "errors": [
+          {
+            "status": "400",
+            "title": "Invalid request"
+          },
+          {
+            "status": "401",
+            "title": "Unauthorized"
+          },
+          {
+            "status": "404",
+            "title": "Not found"
+          },
+          {
+            "status": "409",
+            "title": "Conflict"
+          }
+        ],
+        "unsupportedSemantics": [
+          "advanced parameter authors",
+          "advanced parameter faq_content",
+          "advanced parameter seo_keywords"
+        ]
+      },
+      "assertions": [
+        "retry attempts preserve request and pagination state until a response succeeds",
+        "pagination advances only after a completed page response",
+        "pagination terminates within declared page, item, elapsed-time, memory, repeated-cursor, and repeated-page budgets"
+      ]
+    },
+    {
+      "operationId": "postApiBlogs",
+      "method": "POST",
+      "path": "/api/blogs",
+      "serverId": "documentServer1Https0mcpDev",
+      "authentication": [
+        {
+          "schemes": [
+            "BlogAPIKey"
+          ],
+          "scopes": []
+        }
+      ],
+      "parameters": [],
+      "request": {
+        "contentType": "application/json",
+        "representation": "structured",
+        "fields": [
+          {
+            "name": "authors",
+            "inputName": "authors",
+            "sample": [
+              {
+                "name": "value/id"
+              }
+            ],
+            "type": "array",
+            "required": false
+          },
+          {
+            "name": "canonical_url",
+            "inputName": "canonical_url",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "category",
+            "inputName": "category",
+            "sample": "Engineering",
+            "enum": [
+              "Engineering",
+              "Announcements",
+              "News",
+              "Guides",
+              "Product"
+            ],
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "content",
+            "inputName": "content",
+            "sample": "value/id",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "created_at",
+            "inputName": "created_at",
+            "sample": "2026-01-01T00:00:00.000Z",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "description",
+            "inputName": "description",
+            "sample": "value/id",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "faq_content",
+            "inputName": "faq_content",
+            "sample": [
+              {
+                "answer": "value/id",
+                "question": "value/id"
+              }
+            ],
+            "type": "array",
+            "required": true
+          },
+          {
+            "name": "featured_image",
+            "inputName": "featured_image",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "featured_image_alt",
+            "inputName": "featured_image_alt",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "focus_keyword",
+            "inputName": "focus_keyword",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "id",
+            "inputName": "id",
+            "sample": "00000000-0000-4000-8000-000000000000",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "is_published",
+            "inputName": "is_published",
+            "sample": true,
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "name": "meta_description",
+            "inputName": "meta_description",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "meta_title",
+            "inputName": "meta_title",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "og_description",
+            "inputName": "og_description",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "og_image",
+            "inputName": "og_image",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "og_image_alt",
+            "inputName": "og_image_alt",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "og_title",
+            "inputName": "og_title",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "published_at",
+            "inputName": "published_at",
+            "sample": "2026-01-01T00:00:00.000Z",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "reading_time",
+            "inputName": "reading_time",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "robots_follow",
+            "inputName": "robots_follow",
+            "sample": true,
+            "default": true,
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "name": "robots_index",
+            "inputName": "robots_index",
+            "sample": true,
+            "default": true,
+            "type": "boolean",
+            "required": false
+          },
+          {
+            "name": "schema_type",
+            "inputName": "schema_type",
+            "sample": "BlogPosting",
+            "enum": [
+              "BlogPosting",
+              "Article",
+              "TechArticle"
+            ],
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "seo_keywords",
+            "inputName": "seo_keywords",
+            "sample": [
+              "value/id"
+            ],
+            "type": "array",
+            "required": true
+          },
+          {
+            "name": "slug",
+            "inputName": "slug",
+            "sample": "value-id",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "title",
+            "inputName": "title",
+            "sample": "value/id",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "tldr",
+            "inputName": "tldr",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "twitter_description",
+            "inputName": "twitter_description",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "twitter_image",
+            "inputName": "twitter_image",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "twitter_image_alt",
+            "inputName": "twitter_image_alt",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "twitter_title",
+            "inputName": "twitter_title",
+            "sample": "value/id",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "updated_at",
+            "inputName": "updated_at",
+            "sample": "2026-01-01T00:00:00.000Z",
+            "type": "string",
+            "required": false
+          }
+        ]
+      },
+      "retry": {},
+      "pagination": {
+        "style": "none"
+      },
+      "response": {},
+      "errors": [
+        {
+          "status": "400",
+          "title": "Invalid request"
+        },
+        {
+          "status": "401",
+          "title": "Unauthorized"
+        },
+        {
+          "status": "404",
+          "title": "Not found"
+        },
+        {
+          "status": "409",
+          "title": "Conflict"
+        }
+      ],
+      "requestPlan": {
+        "operationId": "postApiBlogs",
+        "method": "POST",
+        "path": "/api/blogs",
+        "serverId": "documentServer1Https0mcpDev",
+        "request": {
+          "method": "POST",
+          "url": "=/api/blogs",
+          "query": [],
+          "body": [
+            {
+              "name": "authors",
+              "source": "additionalFields"
+            },
+            {
+              "name": "canonical_url",
+              "source": "additionalFields"
+            },
+            {
+              "name": "category",
+              "source": "parameter"
+            },
+            {
+              "name": "content",
+              "source": "parameter"
+            },
+            {
+              "name": "created_at",
+              "source": "additionalFields"
+            },
+            {
+              "name": "description",
+              "source": "parameter"
+            },
+            {
+              "name": "faq_content",
+              "source": "parameter"
+            },
+            {
+              "name": "featured_image",
+              "source": "additionalFields"
+            },
+            {
+              "name": "featured_image_alt",
+              "source": "additionalFields"
+            },
+            {
+              "name": "focus_keyword",
+              "source": "additionalFields"
+            },
+            {
+              "name": "id",
+              "source": "additionalFields"
+            },
+            {
+              "name": "is_published",
+              "source": "additionalFields"
+            },
+            {
+              "name": "meta_description",
+              "source": "additionalFields"
+            },
+            {
+              "name": "meta_title",
+              "source": "additionalFields"
+            },
+            {
+              "name": "og_description",
+              "source": "additionalFields"
+            },
+            {
+              "name": "og_image",
+              "source": "additionalFields"
+            },
+            {
+              "name": "og_image_alt",
+              "source": "additionalFields"
+            },
+            {
+              "name": "og_title",
+              "source": "additionalFields"
+            },
+            {
+              "name": "published_at",
+              "source": "additionalFields"
+            },
+            {
+              "name": "reading_time",
+              "source": "additionalFields"
+            },
+            {
+              "name": "robots_follow",
+              "source": "additionalFields"
+            },
+            {
+              "name": "robots_index",
+              "source": "additionalFields"
+            },
+            {
+              "name": "schema_type",
+              "source": "parameter"
+            },
+            {
+              "name": "seo_keywords",
+              "source": "parameter"
+            },
+            {
+              "name": "slug",
+              "source": "parameter"
+            },
+            {
+              "name": "title",
+              "source": "parameter"
+            },
+            {
+              "name": "tldr",
+              "source": "additionalFields"
+            },
+            {
+              "name": "twitter_description",
+              "source": "additionalFields"
+            },
+            {
+              "name": "twitter_image",
+              "source": "additionalFields"
+            },
+            {
+              "name": "twitter_image_alt",
+              "source": "additionalFields"
+            },
+            {
+              "name": "twitter_title",
+              "source": "additionalFields"
+            },
+            {
+              "name": "updated_at",
+              "source": "additionalFields"
+            }
+          ],
+          "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          }
+        },
+        "authentication": [
+          {
+            "schemes": [
+              "BlogAPIKey"
+            ],
+            "scopes": []
+          }
+        ],
+        "retry": {},
+        "pagination": {
+          "style": "none"
+        },
+        "response": {},
+        "errors": [
+          {
+            "status": "400",
+            "title": "Invalid request"
+          },
+          {
+            "status": "401",
+            "title": "Unauthorized"
+          },
+          {
+            "status": "404",
+            "title": "Not found"
+          },
+          {
+            "status": "409",
+            "title": "Conflict"
+          }
+        ],
+        "unsupportedSemantics": [
+          "advanced parameter authors",
+          "advanced parameter faq_content",
+          "advanced parameter seo_keywords"
+        ]
+      },
+      "assertions": [
+        "retry attempts preserve request and pagination state until a response succeeds",
+        "pagination advances only after a completed page response",
+        "pagination terminates within declared page, item, elapsed-time, memory, repeated-cursor, and repeated-page budgets"
+      ]
+    },
+    {
+      "operationId": "postApiBlogsIdPublish",
+      "method": "POST",
+      "path": "/api/blogs/{id}/publish",
+      "serverId": "documentServer1Https0mcpDev",
+      "authentication": [
+        {
+          "schemes": [
+            "BlogAPIKey"
+          ],
+          "scopes": []
+        }
+      ],
+      "parameters": [
+        {
+          "name": "id",
+          "inputName": "id",
+          "sample": "00000000-0000-4000-8000-000000000000",
+          "location": "path",
+          "required": true,
+          "arrayFormat": "indices"
+        }
+      ],
+      "request": {
+        "contentType": "application/json",
+        "representation": "structured",
+        "fields": []
+      },
+      "retry": {},
+      "pagination": {
+        "style": "none"
+      },
+      "response": {},
+      "errors": [
+        {
+          "status": "400",
+          "title": "Invalid request"
+        },
+        {
+          "status": "401",
+          "title": "Unauthorized"
+        },
+        {
+          "status": "404",
+          "title": "Not found"
+        },
+        {
+          "status": "409",
+          "title": "Conflict"
+        }
+      ],
+      "requestPlan": {
+        "operationId": "postApiBlogsIdPublish",
+        "method": "POST",
+        "path": "/api/blogs/{id}/publish",
+        "serverId": "documentServer1Https0mcpDev",
+        "request": {
+          "method": "POST",
+          "url": "=/api/blogs/{{$parameter[\"id\"]}}/publish",
+          "query": [],
+          "body": [],
+          "headers": {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+          }
+        },
+        "authentication": [
+          {
+            "schemes": [
+              "BlogAPIKey"
+            ],
+            "scopes": []
+          }
+        ],
+        "retry": {},
+        "pagination": {
+          "style": "none"
+        },
+        "response": {},
+        "errors": [
+          {
+            "status": "400",
+            "title": "Invalid request"
+          },
+          {
+            "status": "401",
+            "title": "Unauthorized"
+          },
+          {
+            "status": "404",
+            "title": "Not found"
+          },
+          {
+            "status": "409",
+            "title": "Conflict"
+          }
+        ],
+        "unsupportedSemantics": []
+      },
+      "assertions": [
+        "retry attempts preserve request and pagination state until a response succeeds",
+        "pagination advances only after a completed page response",
+        "pagination terminates within declared page, item, elapsed-time, memory, repeated-cursor, and repeated-page budgets"
+      ]
+    }
+  ],
+  "triggerFixtures": []
+}
